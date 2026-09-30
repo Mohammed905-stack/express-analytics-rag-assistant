@@ -1,0 +1,46 @@
+{
+  "origin": "User-provided API response downloads from the candidate's local Windows app",
+  "checked": "Response structure, source labels/excerpts and recorded workflow outcomes; not an independent repeat of model calls",
+  "cases": [
+    {
+      "file": "response-0c584ebafb9248cb8b368e6e181a142e.json",
+      "question": "How do I declare a JSON request body using a Pydantic model in FastAPI?",
+      "status": "answered",
+      "sources": 3,
+      "retrieval_retries": 0,
+      "support_check_passed": true
+    },
+    {
+      "file": "response-f8d6b79426b341cd9899afbe8626a73e.json",
+      "question": "what is current weather in mumbai ?",
+      "status": "insufficient_context",
+      "sources": 0,
+      "retrieval_retries": 1,
+      "support_check_passed": false
+    },
+    {
+      "file": "response-210c5fa2d6ce45bea53db3dd8a64e275.json",
+      "question": "How do I make a query parameter optional in FastAPI?",
+      "status": "answered",
+      "sources": 2,
+      "retrieval_retries": 0,
+      "support_check_passed": true
+    },
+    {
+      "file": "response-f6d806b7e0de467c985b3bde5e72972f.json",
+      "question": "How can I return a 404 error using HTTPException in FastAPI?",
+      "status": "answered",
+      "sources": 1,
+      "retrieval_retries": 0,
+      "support_check_passed": true
+    },
+    {
+      "file": "response-e91adacfb8f54b46815cee5c754c909b.json",
+      "question": "What is the difference between bytes and UploadFile in FastAPI?",
+      "status": "answered",
+      "sources": 2,
+      "retrieval_retries": 0,
+      "support_check_passed": true
+    }
+  ]
+}

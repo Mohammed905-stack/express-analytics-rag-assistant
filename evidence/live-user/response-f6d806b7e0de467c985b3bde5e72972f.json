@@ -1,0 +1,98 @@
+{
+  "captured_at": "2026-09-30T15:06:49.150Z",
+  "mode": "api_response",
+  "question": "How can I return a 404 error using HTTPException in FastAPI?",
+  "response": {
+    "query_id": "f6d806b7e0de467c985b3bde5e72972f",
+    "answer": "You can return a 404 error in FastAPI by raising an HTTPException with status_code=404 and a detail message, such as `raise HTTPException(status_code=404, detail=\"Item not found\")` [1].",
+    "status": "answered",
+    "sources": [
+      {
+        "citation": 1,
+        "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-1",
+        "document_id": "8ad2f4afcb394cdcbf6a9c040ede8d70",
+        "title": "Handling Errors",
+        "source": "https://fastapi.tiangolo.com/tutorial/handling-errors/",
+        "excerpt": "items = {\"foo\": \"The Foo Wrestlers\"}\n\n\n@app.get(\"/items/{item_id}\")\nasync def read_item(item_id: str):\n    if item_id not in items:\n        raise HTTPException(status_code=404, detail=\"Item not found\")\n    return {\"item\": items[item_id]}\n\n```\nRaise an\nHTTPException\nin your code\nHTTPException\nis a normal Python exception with additional data relevant for APIs.\nBecause it's a Python exception, you don't\nreturn\nit, you\nraise\nit.\nThis also means that if you are inside a utility function that you are calling inside of your\npath operation function\n, and you raise the\nHTTPException\nfrom inside of that utility function, it won't run the rest of the code in the\npath operation function\n, it will terminate that request right away and send the HTTP error from the\nHTTPException\nto the client.\nThe benefit of raising an exception over returning a value will be more evident in the section about Dependencies and Security.\nIn this example, when the client requests an item by an ID that doesn't exist, raise an exception with a status code of\n404\n:\nPython 3.10+\n```python\nfrom fastapi import FastAPI, HTTPException\n\napp = FastAPI()\n\nitems = {\"foo\": \"The Foo Wrestlers\"}\n\n\n@app.get(\"/items/{item_id}\")\nasync def read_item(item_id: str):\n    if item_id not in items:\n        raise HTTPException(status_code=404, detail=\"Item not found\")\n    return {\"item\": items[item_id]}\n\n```\nThe resulting response\nIf the client requests\nhttp://example.com/items/foo\n(an\nitem_id\n\"foo\"\n), that client will receive an HTTP status code of 200, and a JSON response of:\n```python\n{\n  \"item\": \"The Foo Wrestlers\"\n}"
+      }
+    ],
+    "retries": 0,
+    "query_type": "how-to",
+    "trace": [
+      {
+        "node": "query_analysis",
+        "search_query": "FastAPI raise HTTPException status_code 404 error response",
+        "query_type": "how-to"
+      },
+      {
+        "node": "retrieval",
+        "count": 4,
+        "results": [
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-1",
+            "title": "Handling Errors",
+            "score": 0.7857
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-2",
+            "title": "Handling Errors",
+            "score": 0.7677
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-0",
+            "title": "Handling Errors",
+            "score": 0.7632
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-6",
+            "title": "Handling Errors",
+            "score": 0.7371
+          }
+        ]
+      },
+      {
+        "node": "document_grading",
+        "grades": [
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-1",
+            "relevant": true,
+            "reason": "The passage provides explicit code and instructions on how to use HTTPException to return a 404 error in FastAPI."
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-2",
+            "relevant": true,
+            "reason": "The passage explicitly demonstrates how to use HTTPException in FastAPI to return a 404 error with a detail message."
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-0",
+            "relevant": true,
+            "reason": "The passage provides the exact code example showing how to raise an HTTPException with a status code of 404 in FastAPI."
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-6",
+            "relevant": true,
+            "reason": "The passage provides an example of raising an HTTPException in FastAPI (demonstrating status_code=418), which directly illustrates the syntax and method used to return HTTP error codes like 404."
+          }
+        ]
+      },
+      {
+        "node": "generation",
+        "citations_valid": true,
+        "citation_failures": [],
+        "citation_ids": [
+          "S1"
+        ],
+        "inline_labels": [
+          "S1"
+        ],
+        "discarded_unused_ids": [],
+        "citation_repairs": 0
+      },
+      {
+        "node": "grounding_check",
+        "supported": true,
+        "reason": ""
+      }
+    ]
+  }
+}

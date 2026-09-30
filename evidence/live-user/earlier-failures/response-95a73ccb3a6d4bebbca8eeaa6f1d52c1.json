@@ -1,0 +1,79 @@
+{
+  "captured_at": "2026-09-30T14:18:41.224Z",
+  "mode": "api_response",
+  "question": "How do I declare a JSON request body using a Pydantic model in FastAPI?",
+  "response": {
+    "query_id": "95a73ccb3a6d4bebbca8eeaa6f1d52c1",
+    "answer": "I don't have enough verified information in the indexed documents to answer this question. Upload relevant documentation or ask a question covered by the guides.",
+    "status": "insufficient_context",
+    "sources": [],
+    "retries": 0,
+    "query_type": "how-to",
+    "trace": [
+      {
+        "node": "query_analysis",
+        "search_query": "FastAPI declare JSON request body Pydantic model BaseModel request payload",
+        "query_type": "how-to"
+      },
+      {
+        "node": "retrieval",
+        "count": 4,
+        "results": [
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-0",
+            "title": "Request Body",
+            "score": 0.7952
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-1",
+            "title": "Request Body",
+            "score": 0.7797
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-4",
+            "title": "Request Body",
+            "score": 0.7654
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-2",
+            "title": "Request Body",
+            "score": 0.7584
+          }
+        ]
+      },
+      {
+        "node": "document_grading",
+        "grades": [
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-0",
+            "relevant": true,
+            "reason": "The passage provides the exact code and explanation for declaring a JSON request body using a Pydantic model in FastAPI by inheriting from BaseModel."
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-1",
+            "relevant": true,
+            "reason": "The passage directly shows how to define a Pydantic model and use it as a parameter in a FastAPI path operation to declare a JSON request body."
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-4",
+            "relevant": true,
+            "reason": "The passage provides code examples demonstrating how to declare a JSON request body using a Pydantic model in FastAPI function parameters."
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-2",
+            "relevant": true,
+            "reason": "The passage explains how to declare a request body type as a Pydantic model in FastAPI and describes the resulting functionality."
+          }
+        ]
+      },
+      {
+        "node": "generation",
+        "citations_valid": false
+      },
+      {
+        "node": "fallback",
+        "reason": "missing_or_invalid_citations"
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "captured_at": "2026-09-30T14:40:17.924Z",
+  "mode": "api_response",
+  "question": "what is current weather in mumbai ?",
+  "response": {
+    "query_id": "f8d6b79426b341cd9899afbe8626a73e",
+    "answer": "I don't have enough verified information in the indexed documents to answer this question. Upload relevant documentation or ask a question covered by the guides.",
+    "status": "insufficient_context",
+    "sources": [],
+    "retries": 1,
+    "query_type": "conceptual",
+    "trace": [
+      {
+        "node": "query_analysis",
+        "search_query": "current weather conditions temperature Mumbai meteorological API",
+        "query_type": "conceptual"
+      },
+      {
+        "node": "retrieval",
+        "count": 4,
+        "results": [
+          {
+            "chunk_id": "c673a54ce29e4c30b0f7e3aec0bc2564-9",
+            "title": "Response Model - Return Type",
+            "score": 0.5622
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-2",
+            "title": "Handling Errors",
+            "score": 0.5606
+          },
+          {
+            "chunk_id": "9d4dfdeba33a4b55985bea9fc08126b7-1",
+            "title": "Query Parameters",
+            "score": 0.5506
+          },
+          {
+            "chunk_id": "9d4dfdeba33a4b55985bea9fc08126b7-0",
+            "title": "Query Parameters",
+            "score": 0.549
+          }
+        ]
+      },
+      {
+        "node": "document_grading",
+        "grades": [
+          {
+            "chunk_id": "c673a54ce29e4c30b0f7e3aec0bc2564-9",
+            "relevant": false,
+            "reason": "The passage discusses returning a Response directly in Python using FastAPI, which has no relation to the current weather in Mumbai."
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-2",
+            "relevant": false,
+            "reason": "The passage discusses FastAPI error handling and HTTP exceptions, which has no connection to the current weather in Mumbai."
+          },
+          {
+            "chunk_id": "9d4dfdeba33a4b55985bea9fc08126b7-1",
+            "relevant": false,
+            "reason": "The passage discusses FastAPI query parameters and routing code in Python, which is completely unrelated to the weather in Mumbai."
+          },
+          {
+            "chunk_id": "9d4dfdeba33a4b55985bea9fc08126b7-0",
+            "relevant": false,
+            "reason": "The passage discusses query parameters in FastAPI tutorial documentation, which is entirely unrelated to the current weather in Mumbai."
+          }
+        ]
+      },
+      {
+        "node": "query_rewrite",
+        "search_query": "live atmospheric readings Mumbai weather station",
+        "retries": 1
+      },
+      {
+        "node": "retrieval",
+        "count": 4,
+        "results": [
+          {
+            "chunk_id": "c673a54ce29e4c30b0f7e3aec0bc2564-9",
+            "title": "Response Model - Return Type",
+            "score": 0.5181
+          },
+          {
+            "chunk_id": "9d4dfdeba33a4b55985bea9fc08126b7-0",
+            "title": "Query Parameters",
+            "score": 0.5176
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-2",
+            "title": "Handling Errors",
+            "score": 0.5165
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-0",
+            "title": "Handling Errors",
+            "score": 0.5134
+          }
+        ]
+      },
+      {
+        "node": "document_grading",
+        "grades": [
+          {
+            "chunk_id": "c673a54ce29e4c30b0f7e3aec0bc2564-9",
+            "relevant": false,
+            "reason": "The passage discusses Python FastAPI routing and responses, which has no relationship to the current weather in Mumbai."
+          },
+          {
+            "chunk_id": "9d4dfdeba33a4b55985bea9fc08126b7-0",
+            "relevant": false,
+            "reason": "The passage discusses FastAPI query parameters in Python and contains no information about the weather in Mumbai."
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-2",
+            "relevant": false,
+            "reason": "The passage discusses handling HTTP exceptions and custom headers in FastAPI, which is entirely unrelated to the current weather in Mumbai."
+          },
+          {
+            "chunk_id": "8ad2f4afcb394cdcbf6a9c040ede8d70-0",
+            "relevant": false,
+            "reason": "The passage discusses handling errors and HTTP status codes in FastAPI, which is completely unrelated to the current weather in Mumbai."
+          }
+        ]
+      },
+      {
+        "node": "fallback",
+        "reason": "no_relevant_passages"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+Browser QA: actual Chromium UI; model/network success scenarios use explicit HTTP fixtures.
+Real local page: loads, shows missing-key instructions, and serves the interface.
+Missing-key submission shows instructions without fabricated answers.
+390px, 768px and 1440px layouts: no horizontal overflow.
+Controlled HTTP fixtures: indexing renders all five guides without document shadowing errors.
+Controlled fixtures: answer, citations, safe text excerpts, retry trace, feedback and original-question JSON download work.
+Controlled HTTP 503: error is shown and the submit button is re-enabled.
+No browser JavaScript exceptions occurred.
+interface-before-key.png is an actual unconfigured interface screenshot, not live model evidence.

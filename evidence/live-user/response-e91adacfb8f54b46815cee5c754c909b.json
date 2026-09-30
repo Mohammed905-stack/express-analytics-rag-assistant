@@ -1,0 +1,108 @@
+{
+  "captured_at": "2026-09-30T15:08:02.747Z",
+  "mode": "api_response",
+  "question": "What is the difference between bytes and UploadFile in FastAPI?",
+  "response": {
+    "query_id": "e91adacfb8f54b46815cee5c754c909b",
+    "answer": "Using bytes stores the entire file contents in memory, which works well for small files [1]. In contrast, UploadFile uses a spooled file (stored in memory up to a limit, then on disk), making it well-suited for large files like images and videos without consuming all memory [2]. UploadFile also does not require using File() in the default parameter value, allows you to get file metadata, and provides a file-like async interface [2].",
+    "status": "answered",
+    "sources": [
+      {
+        "citation": 1,
+        "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-1",
+        "document_id": "83dea25f3df8410fac81ffa0d8819b5f",
+        "title": "Request Files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files/",
+        "excerpt": "```\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\n```python\nfrom fastapi import FastAPI, File, UploadFile\n\napp = FastAPI()\n\n\n@app.post(\"/files/\")\nasync def create_file(file: bytes = File()):\n    return {\"file_size\": len(file)}\n\n\n@app.post(\"/uploadfile/\")\nasync def create_upload_file(file: UploadFile):\n    return {\"filename\": file.filename}\n\n```\nNote\nFile\nis a class that inherits directly from\nForm\n.\nBut remember that when you import\nQuery\n,\nPath\n,\nFile\nand others from\nfastapi\n, those are actually functions that return special classes.\nTip\nTo declare File bodies, you need to use\nFile\n, because otherwise the parameters would be interpreted as query parameters or body (JSON) parameters.\nThe files will be uploaded as \"form data\".\nIf you declare the type of your\npath operation function\nparameter as\nbytes\n,\nFastAPI\nwill read the file for you and you will receive the contents as\nbytes\n.\nKeep in mind that this means that the whole contents will be stored in memory. This will work well for small files.\nBut there are several cases in which you might benefit from using\nUploadFile\n.\nFile Parameters with\nUploadFile\nDefine a file parameter with a type of\nUploadFile\n:\nPython 3.10+\n```python\nfrom typing import Annotated\n\nfrom fastapi import FastAPI, File, UploadFile\n\napp = FastAPI()\n\n\n@app.post(\"/files/\")\nasync def create_file(file: Annotated[bytes, File()]):\n    return {\"file_size\": len(file)}\n\n\n@app.post(\"/uploadfile/\")\nasync def create_upload_file(file: UploadFile):\n    return {\"filename\": file.filename}\n\n```\n🤓 Other versions and variants\nPython 3.10+ - non-Annotated\nTip\nPrefer to use the\nAnnotated\nversion if possible.\n```python\nfrom fastapi import FastAPI, File, UploadFile\n\napp = FastAPI()"
+      },
+      {
+        "citation": 2,
+        "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-3",
+        "document_id": "83dea25f3df8410fac81ffa0d8819b5f",
+        "title": "Request Files",
+        "source": "https://fastapi.tiangolo.com/tutorial/request-files/",
+        "excerpt": "```\nUsing\nUploadFile\nhas several advantages over\nbytes\n:\nYou don't have to use\nFile()\nin the default value of the parameter.\nIt uses a \"spooled\" file:\nA file stored in memory up to a maximum size limit, and after passing this limit it will be stored on disk.\nThis means that it will work well for large files like images, videos, large binaries, etc. without consuming all the memory.\nYou can get metadata from the uploaded file.\nIt has a\nfile-like\nasync\ninterface.\nIt exposes an actual Python\nSpooledTemporaryFile\nobject that you can pass directly to other libraries that expect a file-like object.\nUploadFile\nUploadFile\nhas the following attributes:\nfilename\n: A\nstr\nwith the original file name that was uploaded (e.g.\nmyimage.jpg\n).\ncontent_type\n: A\nstr\nwith the content type (MIME type / media type) (e.g.\nimage/jpeg\n).\nfile\n: A\nSpooledTemporaryFile\n(a\nfile-like\nobject). This is the actual Python file object that you can pass directly to other functions or libraries that expect a \"file-like\" object.\nUploadFile\nhas the following\nasync\nmethods. They all call the corresponding file methods underneath (using the internal\nSpooledTemporaryFile\n).\nwrite(data)\n: Writes\ndata\n(\nstr\nor\nbytes\n) to the file.\nread(size)\n: Reads\nsize\n(\nint\n) bytes/characters of the file.\nseek(offset)\n: Goes to the byte position\noffset\n(\nint\n) in the file.\nE.g.,\nawait myfile.seek(0)\nwould go to the start of the file.\nThis is especially useful if you run\nawait myfile.read()\nonce and then need to read the contents again.\nclose()\n: Closes the file.\nAs all these methods are\nasync\nmethods, you need to \"await\" them.\nFor example, inside of an\nasync\npath operation function\nyou can get the contents with:\n```python\ncontents = await myfile.read()"
+      }
+    ],
+    "retries": 0,
+    "query_type": "conceptual",
+    "trace": [
+      {
+        "node": "query_analysis",
+        "search_query": "FastAPI bytes vs UploadFile difference file upload memory spooling",
+        "query_type": "conceptual"
+      },
+      {
+        "node": "retrieval",
+        "count": 4,
+        "results": [
+          {
+            "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-3",
+            "title": "Request Files",
+            "score": 0.8045
+          },
+          {
+            "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-4",
+            "title": "Request Files",
+            "score": 0.7616
+          },
+          {
+            "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-1",
+            "title": "Request Files",
+            "score": 0.7531
+          },
+          {
+            "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-5",
+            "title": "Request Files",
+            "score": 0.75
+          }
+        ]
+      },
+      {
+        "node": "document_grading",
+        "grades": [
+          {
+            "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-3",
+            "relevant": true,
+            "reason": "The passage explicitly details the advantages of UploadFile over bytes in FastAPI, including memory handling, metadata availability, and file-like async interfaces."
+          },
+          {
+            "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-4",
+            "relevant": false,
+            "reason": "The passage discusses UploadFile and form data encoding in FastAPI, but it does not compare bytes and UploadFile or explain the difference between them."
+          },
+          {
+            "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-1",
+            "relevant": true,
+            "reason": "The passage explicitly explains how FastAPI handles 'bytes' (reading the whole file into memory) compared to 'UploadFile', providing direct evidence to answer the question."
+          },
+          {
+            "chunk_id": "83dea25f3df8410fac81ffa0d8819b5f-5",
+            "relevant": true,
+            "reason": "The passage provides code examples demonstrating the use of both bytes and UploadFile in FastAPI endpoints, which directly helps in understanding their differences."
+          }
+        ]
+      },
+      {
+        "node": "generation",
+        "citations_valid": true,
+        "citation_failures": [],
+        "citation_ids": [
+          "S2",
+          "S1"
+        ],
+        "inline_labels": [
+          "S2",
+          "S1"
+        ],
+        "discarded_unused_ids": [],
+        "citation_repairs": 0
+      },
+      {
+        "node": "grounding_check",
+        "supported": true,
+        "reason": ""
+      }
+    ]
+  }
+}

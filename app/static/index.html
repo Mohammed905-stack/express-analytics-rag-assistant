@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Express Docs | Documentation Assistant</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<div class="layout">
+  <aside>
+    <a class="brand" href="/"><span class="logo">E</span>Express Docs<span class="dot">.</span></a>
+    <p class="eyebrow">TECHNICAL DOCUMENTATION ASSISTANT</p>
+    <h2 class="sidebar-heading">Your guides.<br>Your answers.</h2>
+    <p class="muted">Search a focused document library and see the evidence behind each response.</p>
+    <section class="library">
+      <div class="row"><h2>Document library</h2><span id="count" class="count">0</span></div>
+      <p class="small muted">Five official FastAPI guides are included. Index once; reuse on later runs.</p>
+      <button id="index" class="primary full">Index the five guides</button>
+      <ul id="documents" class="document-list"></ul>
+      <details class="upload"><summary>Add your own document</summary><form id="upload-form">
+        <label for="file">UTF-8 text, Markdown or HTML · max 2 MiB</label><input id="file" type="file" accept=".txt,.md,.html,.htm" required>
+        <label for="source">Source URL or label (optional)</label><input id="source" maxlength="1000" placeholder="https://official-docs.example/guide">
+        <button class="secondary full" type="submit">Upload and index</button>
+      </form></details>
+    </section>
+    <div class="sidebar-bottom"><a href="/docs" target="_blank" rel="noopener">Explore the API ↗</a><p class="small muted">Python · LangGraph · FastAPI · Gemini · FAISS</p></div>
+  </aside>
+  <main>
+    <header><span class="eyebrow">EXPRESS ANALYTICS · INTERN ASSIGNMENT</span><span id="health" class="health">Connecting…</span></header>
+    <section class="hero"><p class="hero-label"><span></span> SELF-CORRECTIVE RAG</p><h1>Ask a question.<br><em>Follow the evidence.</em></h1><p>Retrieve useful passages, check their relevance, and get a cited explanation from your documentation.</p></section>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section class="question-card"><form id="query-form">
+      <label for="question">What would you like to understand?</label><textarea id="question" rows="3" maxlength="2000" required placeholder="How do I accept a JSON request body in FastAPI?"></textarea>
+      <div class="question-actions"><span class="small muted">Each question uses your indexed documents.</span><button id="ask" class="primary" type="submit">Find an answer →</button></div>
+    </form></section>
+    <div class="samples"><span class="small muted">Try a question</span><button data-question="How do I declare a JSON request body with a Pydantic model in FastAPI?">Request bodies</button><button data-question="How can I return a 404 error using HTTPException?">Handling errors</button><button data-question="What is the difference between bytes and UploadFile for file uploads?">File uploads</button><button data-question="What is the current weather in Mumbai?">Outside the guides</button></div>
+    <div id="busy" class="busy" role="status" hidden><span class="spinner"></span><span id="busy-text">Working…</span></div>
+    <section id="result" class="result" hidden>
+      <div class="row"><h2>Your answer</h2><span id="status" class="tag"></span></div><div id="answer" class="answer"></div>
+      <div id="sources" class="sources"></div>
+      <div class="feedback"><label for="comment">Feedback comment (optional)</label><input id="comment" maxlength="2000" placeholder="What was useful or could improve?"><div class="row"><span class="small muted">Was this helpful?</span><button id="up" class="secondary" type="button">👍 Yes</button><button id="down" class="secondary" type="button">👎 Needs work</button><span id="feedback-state" class="small" role="status"></span></div></div>
+      <details class="workflow"><summary>See the workflow decisions <span id="retries"></span></summary><div id="trace"></div></details>
+      <button id="download" class="text-button" type="button">Download this response as JSON ↓</button>
+    </section>
+    <section class="steps"><div><span>01</span><h3>Retrieve</h3><p>Search passages by meaning.</p></div><div><span>02</span><h3>Grade & correct</h3><p>Check relevance; rewrite a weak search.</p></div><div><span>03</span><h3>Answer & verify</h3><p>Cite sources and check answer support.</p></div></section>
+    <footer>Local demonstration application <span>Developed with AI assistance · Mohammed Kaderji</span></footer>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body></html>

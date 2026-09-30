@@ -1,0 +1,80 @@
+{
+  "mode": "real_local_http_without_api_key",
+  "results": [
+    {
+      "method": "GET",
+      "path": "/health",
+      "http_status": 200,
+      "response": {
+        "status": "ok",
+        "key_configured": false,
+        "documents": 0,
+        "model": "gemini-3.8-flash",
+        "embedding_model": "gemini-embedding-001"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/documents",
+      "http_status": 200,
+      "response": {
+        "documents": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "http_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/docs",
+      "http_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/openapi.json",
+      "http_status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/query",
+      "http_status": 200,
+      "response": {
+        "query_id": "8dbd026914134f1091a1e30f0a690217",
+        "answer": "I don't have enough verified information in the indexed documents to answer this question. Upload relevant documentation or ask a question covered by the guides.",
+        "status": "insufficient_context",
+        "sources": [],
+        "retries": 0,
+        "query_type": "unclassified",
+        "trace": [
+          {
+            "node": "query_analysis",
+            "skipped": "empty corpus"
+          },
+          {
+            "node": "retrieval",
+            "count": 0,
+            "results": []
+          },
+          {
+            "node": "document_grading",
+            "grades": []
+          },
+          {
+            "node": "fallback",
+            "reason": "empty_corpus"
+          }
+        ]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ingest",
+      "http_status": 503,
+      "response": {
+        "detail": "Gemini API key is missing. Run SETUP_KEY.cmd, then restart START.cmd."
+      }
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "captured_at": "2026-09-30T14:35:45.651Z",
+  "mode": "api_response",
+  "question": "How do I declare a JSON request body using a Pydantic model in FastAPI?",
+  "response": {
+    "query_id": "0c584ebafb9248cb8b368e6e181a142e",
+    "answer": "To declare a JSON request body in FastAPI, first import BaseModel from pydantic and create your data model class inheriting from BaseModel using standard Python types [1]. Then, declare the model as a parameter in your path operation function (such as a POST or PUT request) with its type set to the model you created [1], [2], [3].",
+    "status": "answered",
+    "sources": [
+      {
+        "citation": 1,
+        "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-0",
+        "document_id": "4dd32e19eedb400ba1a5abe2b5fc4688",
+        "title": "Request Body",
+        "source": "https://fastapi.tiangolo.com/tutorial/body/",
+        "excerpt": "# Request Body\n\nSource: https://fastapi.tiangolo.com/tutorial/body/\n\nWhen you need to send data from a client (let's say, a browser) to your API, you send it as a\nrequest body\n.\nA\nrequest\nbody is data sent by the client to your API. A\nresponse\nbody is the data your API sends to the client.\nYour API almost always has to send a\nresponse\nbody. But clients don't necessarily need to send\nrequest bodies\nall the time, sometimes they only request a path, maybe with some query parameters, but don't send a body.\nTo declare a\nrequest\nbody, you use\nPydantic\nmodels with all their power and benefits.\nNote\nTo send data, you should use one of:\nPOST\n(the most common),\nPUT\n,\nDELETE\nor\nPATCH\n.\nSending a body with a\nGET\nrequest has an undefined behavior in the specifications, nevertheless, it is supported by FastAPI, only for very complex/extreme use cases.\nAs it is discouraged, the interactive docs with Swagger UI won't show the documentation for the body when using\nGET\n, and proxies in the middle might not support it.\nImport Pydantic's\nBaseModel\nFirst, you need to import\nBaseModel\nfrom\npydantic\n:\nPython 3.10+\n```python\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\n\n\nclass Item(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n\n\napp = FastAPI()\n\n\n@app.post(\"/items/\")\nasync def create_item(item: Item):\n    return item\n\n```\nCreate your data model\nThen you declare your data model as a class that inherits from\nBaseModel\n.\nUse standard Python types for all the attributes:\nPython 3.10+\n```python\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\n\n\nclass Item(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n\n\napp = FastAPI()"
+      },
+      {
+        "citation": 2,
+        "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-1",
+        "document_id": "4dd32e19eedb400ba1a5abe2b5fc4688",
+        "title": "Request Body",
+        "source": "https://fastapi.tiangolo.com/tutorial/body/",
+        "excerpt": "class Item(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n\n\napp = FastAPI()\n\n\n@app.post(\"/items/\")\nasync def create_item(item: Item):\n    return item\n\n```\nThe same as when declaring query parameters, when a model attribute has a default value, it is not required. Otherwise, it is required. Use\nNone\nto make it just optional.\nFor example, this model above declares a JSON \"\nobject\n\" (or Python\ndict\n) like:\n```python\n{\n    \"name\": \"Foo\",\n    \"description\": \"An optional description\",\n    \"price\": 45.2,\n    \"tax\": 3.5\n}\n\n```\n...as\ndescription\nand\ntax\nare optional (with a default value of\nNone\n), this JSON \"\nobject\n\" would also be valid:\n```python\n{\n    \"name\": \"Foo\",\n    \"price\": 45.2\n}\n\n```\nDeclare it as a parameter\nTo add it to your\npath operation\n, declare it the same way you declared path and query parameters:\nPython 3.10+\n```python\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\n\n\nclass Item(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n\n\napp = FastAPI()\n\n\n@app.post(\"/items/\")\nasync def create_item(item: Item):\n    return item"
+      },
+      {
+        "citation": 3,
+        "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-4",
+        "document_id": "4dd32e19eedb400ba1a5abe2b5fc4688",
+        "title": "Request Body",
+        "source": "https://fastapi.tiangolo.com/tutorial/body/",
+        "excerpt": "class Item(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n\n\napp = FastAPI()\n\n\n@app.post(\"/items/\")\nasync def create_item(item: Item):\n    item_dict = item.model_dump()\n    if item.tax is not None:\n        price_with_tax = item.price + item.tax\n        item_dict.update({\"price_with_tax\": price_with_tax})\n    return item_dict\n\n```\nRequest body + path parameters\nYou can declare path parameters and request body at the same time.\nFastAPI\nwill recognize that the function parameters that match path parameters should be\ntaken from the path\n, and that function parameters that are declared to be Pydantic models should be\ntaken from the request body\n.\nPython 3.10+\n```python\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\n\n\nclass Item(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n\n\napp = FastAPI()\n\n\n@app.put(\"/items/{item_id}\")\nasync def update_item(item_id: int, item: Item):\n    return {\"item_id\": item_id, **item.model_dump()}\n\n```\nRequest body + path + query parameters\nYou can also declare\nbody\n,\npath\nand\nquery\nparameters, all at the same time.\nFastAPI\nwill recognize each of them and take the data from the correct place.\nPython 3.10+\n```python\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\n\n\nclass Item(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n\n\napp = FastAPI()\n\n\n@app.put(\"/items/{item_id}\")\nasync def update_item(item_id: int, item: Item, q: str | None = None):\n    result = {\"item_id\": item_id, **item.model_dump()}\n    if q:\n        result.update({\"q\": q})\n    return result"
+      }
+    ],
+    "retries": 0,
+    "query_type": "how-to",
+    "trace": [
+      {
+        "node": "query_analysis",
+        "search_query": "FastAPI declare JSON request body using Pydantic BaseModel",
+        "query_type": "how-to"
+      },
+      {
+        "node": "retrieval",
+        "count": 4,
+        "results": [
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-0",
+            "title": "Request Body",
+            "score": 0.7852
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-1",
+            "title": "Request Body",
+            "score": 0.78
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-2",
+            "title": "Request Body",
+            "score": 0.7649
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-4",
+            "title": "Request Body",
+            "score": 0.7619
+          }
+        ]
+      },
+      {
+        "node": "document_grading",
+        "grades": [
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-0",
+            "relevant": true,
+            "reason": "The passage provides the exact code and explanation for declaring a JSON request body using a Pydantic model in FastAPI by inheriting from BaseModel."
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-1",
+            "relevant": true,
+            "reason": "The passage directly explains and demonstrates how to declare a JSON request body using a Pydantic model in FastAPI."
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-2",
+            "relevant": true,
+            "reason": "The passage explains how to declare a request body type as a Pydantic model in FastAPI and describes what FastAPI does with that declaration."
+          },
+          {
+            "chunk_id": "4dd32e19eedb400ba1a5abe2b5fc4688-4",
+            "relevant": true,
+            "reason": "The passage provides code examples and explanations directly showing how to declare a JSON request body using a Pydantic model in FastAPI."
+          }
+        ]
+      },
+      {
+        "node": "generation",
+        "citations_valid": true,
+        "citation_failures": [],
+        "citation_ids": [
+          "S1",
+          "S2",
+          "S4"
+        ],
+        "inline_labels": [
+          "S1",
+          "S2",
+          "S4"
+        ],
+        "citation_repairs": 0
+      },
+      {
+        "node": "grounding_check",
+        "supported": true,
+        "reason": ""
+      }
+    ]
+  }
+}
