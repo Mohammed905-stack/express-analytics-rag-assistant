@@ -33,6 +33,6 @@ A second response declared known but unused citation IDs. Validation now attache
 
 ## Delivery status and limits
 
-The local working demo and source package are prepared. A public GitHub repository has been created at https://github.com/Mohammed905-stack/express-analytics-rag-assistant. Source upload and GitHub Actions verification are the next delivery checks; follow GITHUB_SUBMISSION.md. No public deployment has occurred or is required by the assignment.
+The local working demo and source package are prepared. A public GitHub repository has been created at https://github.com/Mohammed905-stack/express-analytics-rag-assistant. All 67 source/evidence files were uploaded through the GitHub connection. GitHub Actions passed for source commit 4f940bfc2140550c2e50531f3408324e916a044e: https://github.com/Mohammed905-stack/express-analytics-rag-assistant/actions/runs/36745906222. Both the Python and frontend test steps succeeded. GitHub Actions runs on every push; check the latest run before submission. Follow GITHUB_SUBMISSION.md. No public deployment has occurred or is required by the assignment.
 
 This is a single-process local prototype. Automated checks and the shown questions do not establish production readiness, exhaustive answer accuracy, performance at scale or future API availability.

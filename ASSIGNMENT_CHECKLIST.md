@@ -15,7 +15,7 @@
 | Optional UI | Local HTML/CSS/JavaScript interface | Included |
 | README/setup/examples/tradeoffs | README.md, START_HERE.md | Included |
 | Thought process and improvements | README architecture/chunking/tradeoffs | Included |
-| GitHub repository submission | Public repository, source code, tests and submission guide | Repository created; source upload and CI verification in progress |
+| GitHub repository submission | Public repository, source code, tests and submission guide | Uploaded; source-commit GitHub Actions passed |
 | Optional live test evidence | User's Windows run with their own key; screenshots in evidence/live-user/ | Five guides indexed; four useful questions, outside-corpus refusal and feedback demonstrated |
 
 No additional separate project is required. Public hosting, web fallback and multi-turn memory are not required and are not claimed.
